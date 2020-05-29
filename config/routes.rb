@@ -3,8 +3,8 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   root to: 'admin/dashboard#index'
-  post 'authenticate', to: 'authentication#authenticate'
   scope '/api' do
+    post 'authenticate', to: 'authentication#authenticate'
   end
 
   ActiveAdmin.routes(self)
