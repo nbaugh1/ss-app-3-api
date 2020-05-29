@@ -37,6 +37,9 @@ module SsApp3Api
     config.api_only = true
     config.app_generators.scaffold_controller = :scaffold_controller
 
+    # Add /lib to autoload path
+    config.autoload_paths << Rails.root.join('lib')
+
     # Middleware for ActiveAdmin
     config.middleware.use Rack::MethodOverride
     config.middleware.use ActionDispatch::Flash
