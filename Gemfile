@@ -20,6 +20,8 @@ gem 'bcrypt', '~> 3.1', '>= 3.1.13'
 # Use JWT for token encoding 
 gem 'jwt'
 
+gem 'simple_command'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
