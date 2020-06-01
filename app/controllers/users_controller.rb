@@ -12,6 +12,7 @@ class UsersController < ApiController
     else
       auth = AuthenticateUser.call(user_params[:email], user_params[:password])
       if auth.success?
+        # session[:user_id] = @user.id
         render json: { auth_token: auth.result }
       else
         render json: { error: auth.errors }, status: :unauthorized
