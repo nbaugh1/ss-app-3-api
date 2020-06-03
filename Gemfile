@@ -52,3 +52,5 @@ gem 'devise'
 gem 'activeadmin'
 
 gem 'awesome_print'
+gem 'smartsheet', '>= 1.3.0'
+gem 'dotenv-rails'
