@@ -14,4 +14,25 @@ class AuthenticationController < ApiController
       render json: { error: command.errors }, status: :unauthorized
     end
   end
+
+  def auth_ss
+    client = Smartsheet::Client.new(token: ENV['SS_TOKEN'])
+    code = params[:code]
+    string = ENV['SS_CLIENT_SECRET'] + '|' + code
+    hash = Digest::SHA256.hexdigest string
+    resp = client.token.get(
+      client_id: ENV['SS_CLIENT_ID'],
+      code: code,
+      hash: hash
+    )
+    session[:ss_auth_token] = resp[:access_token]
+    session[:ss_token_type] = resp[:token_type]
+    # cookies[:DID_THIS_WORK] = resp[:access_token]
+    byebug
+    redirect_to '/home'
+  end
+
+  def get_ss_token
+    byebug
+  end
 end
