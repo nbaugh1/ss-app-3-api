@@ -63,6 +63,28 @@ class SmartsheetClient
     new_sheet = response[:result]
   end
 
+  def get_sheet_by_id(sheet_id)
+    file = @client.sheets.get(
+      sheet_id: sheet_id
+    )
+  end
+
+  def get_column(sheet_id, column_id)
+    column = @client.sheets.columns.get(
+      sheet_id: sheet_id,
+      column_id: column_id
+    )
+    byebug
+  end
+
+  def get_csv(sheet_id)
+    file_contents = @client.sheets.get_as_csv(
+      sheet_id: sheet_id
+    )
+
+    File.open('output.csv', 'wb+') { |f| f.write(file_contents) }
+  end
+
   def create_sheet_in_workspace
     test_workspace_id = 3_606_003_104_147_332
     puts 'Enter name for new sheet: '
