@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :rfis
   resources :teams
   get 'users/create'
   devise_for :admin_users, ActiveAdmin::Devise.config

@@ -1,0 +1,2 @@
+class Rfi < ApplicationRecord
+end
