@@ -123,4 +123,22 @@ class SmartsheetClient
   def overview
     contents = @client.home.list
   end
+
+  def build_rfis
+    table = CSV.parse(File.read('output.csv'), headers: true)
+    table.each do |row|
+      r = Rfi.new
+      r.request_id = row['Request ID']
+      r.requested_from = row['Request From']
+      r.nickname = row['RFI Nickname']
+      r.description = row['RFI Description']
+      r.suggestion = row['RFI Suggestion']
+      r.primary_discipline = row['Primary Discipline']
+      r.is_urgent = row['Urgent']
+      r.pm_contact = row['PM Contact']
+      r.status = row['Draft Status']
+      r.save
+      puts "Update to RFI ID: #{r.request_id} saved"
+    end
   end
+end
