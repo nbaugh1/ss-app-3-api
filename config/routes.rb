@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   root to: 'admin/dashboard#index'
   get '/home', to: redirect('http://localhost:3000/home')
   get '/auth_ss', to: 'authentication#auth_ss'
-  post 'auth_ss', to: 'authentication#get_ss_token'
+  post '/auth_ss', to: 'authentication#auth_ss'
   scope '/api' do
     post '/authenticate', to: 'authentication#authenticate'
     post '/users/sign_up', to: 'users#create'

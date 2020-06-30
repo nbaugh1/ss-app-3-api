@@ -27,8 +27,9 @@ class AuthenticationController < ApiController
     )
     session[:ss_auth_token] = resp[:access_token]
     session[:ss_token_type] = resp[:token_type]
-    # cookies[:DID_THIS_WORK] = resp[:access_token]
-    byebug
+    # byebug
+
+    puts '*********Access Token Granted (stored in session)***********'
     redirect_to '/home'
   end
 
